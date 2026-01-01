@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vyra Innovations - Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+body { font-family:'Poppins',sans-serif; background:#0d0d0d; color:white; margin:0; overflow-x:hidden;}
+header{background:#111; padding:20px 50px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; box-shadow:0 4px 10px rgba(0,0,0,0.5);}
+header h1{color:#38bdf8;}
+nav .account { position:relative; cursor:pointer; font-weight:600; }
+.account-menu{ display:none; position:absolute; top:35px; right:0; background:#1a1a1a; padding:15px; border-radius:10px; width:180px; box-shadow:0 4px 15px rgba(0,0,0,0.7);}
+.account-menu a{ display:block; padding:8px 0; color:white; text-decoration:none; transition:color 0.3s;}
+.account-menu a:hover{ color:#38bdf8; }
+.main{ padding:80px 50px;}
+.card-container{ display:flex; flex-wrap:wrap; gap:25px;}
+.card{ background:#2c2c2c; width:250px; padding:25px; border-radius:20px; text-align:center; transition:all 0.5s; cursor:pointer; box-shadow:0 4px 15px rgba(0,0,0,0.5);}
+.card:hover{ transform:translateY(-15px); box-shadow:0 8px 25px rgba(0,0,0,0.7);}
+.card h3{ margin-bottom:10px;}
+.card p{ color:#cbd5f5;}
+</style>
+</head>
+<body>
+<header>
+<h1>Vyra Innovations</h1>
+<nav>
+<div class="account" id="accountBtn">Username <i class="fas fa-caret-down"></i>
+    <div class="account-menu" id="accountMenu">
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <a href="index.html">Logout</a>
+    </div>
+</div>
+</nav>
+</header>
+
+<div class="main">
+<h2>Welcome to Your Dashboard!</h2>
+<p>Explore your courses and resources below:</p>
+<div class="card-container">
+    <div class="card"><h3>Web Development</h3><p>Access lessons, projects, quizzes.</p></div>
+    <div class="card"><h3>Game Development</h3><p>Access lessons, projects, quizzes.</p></div>
+    <div class="card"><h3>Digital Marketing</h3><p>Access lessons, projects, quizzes.</p></div>
+    <div class="card"><h3>Electronics</h3><p>Access lessons, projects, quizzes.</p></div>
+    <div class="card"><h3>Python Programming</h3><p>Access lessons, projects, quizzes.</p></div>
+</div>
+</div>
+
+<script>
+const accountBtn = document.getElementById('accountBtn');
+const accountMenu = document.getElementById('accountMenu');
+accountBtn.onclick = ()=>{ accountMenu.style.display = (accountMenu.style.display==='block')?'none':'block'; }
+window.onclick = (e)=>{ if(!accountBtn.contains(e.target)){ accountMenu.style.display='none'; } }
+</script>
+</body>
+</html>

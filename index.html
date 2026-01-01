@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vyra Innovations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Global Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: #0d0d0d; color: white; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        header { background-color: #111; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+        header h1 { color: #38bdf8; font-size: 28px;}
+        nav a { margin-left: 20px; font-weight: 600; transition: color 0.3s;}
+        nav a:hover { color: #22d3ee; }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #1f1f1f, #2c2c2c); overflow: hidden; position: relative; padding: 0 20px;}
+        .hero span { position: absolute; border-radius: 50%; opacity: 0.3; animation: float 6s ease-in-out infinite;}
+        .hero span:nth-child(1){ width: 60px; height: 60px; background: #38bdf8; top: 10%; left: 15%; animation-delay: 0s; }
+        .hero span:nth-child(2){ width: 40px; height: 40px; background: #22d3ee; top: 50%; left: 70%; animation-delay: 2s; }
+        .hero span:nth-child(3){ width: 30px; height: 30px; background: #ffffff; top: 70%; left: 25%; animation-delay: 4s; }
+
+        @keyframes float { 0%,100%{ transform: translateY(0px) translateX(0px);} 50%{ transform: translateY(-20px) translateX(20px); } }
+
+        .hero h2 { font-size: 42px; color: #38bdf8; margin-bottom: 20px; opacity: 0; transform: translateY(30px); animation: fadeSlide 1.2s forwards;}
+        .hero p { font-size: 20px; max-width: 650px; color: #cbd5f5; margin-bottom: 30px; opacity: 0; transform: translateY(30px); animation: fadeSlide 1.5s forwards;}
+        .btn { display: inline-block; padding: 15px 30px; background-color: #38bdf8; color: black; font-weight: bold; border-radius: 10px; transition: transform 0.4s, background-color 0.4s, box-shadow 0.4s; opacity: 0; animation: fadeSlide 1.8s forwards; box-shadow: 0 0 15px #38bdf8;}
+        .btn:hover { transform: scale(1.15); background-color: #22d3ee; box-shadow: 0 0 25px #22d3ee;}
+
+        @keyframes fadeSlide { to { opacity: 1; transform: translateY(0); } }
+
+        /* Courses Section */
+        .courses { padding: 80px 20px; background-color: #1a1a1a;}
+        .courses h2 { text-align: center; color: #38bdf8; font-size: 32px; margin-bottom: 50px; }
+        .card-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .card { background-color: #2c2c2c; width: 250px; padding: 25px; border-radius: 20px; text-align: center; transition: transform 0.5s, box-shadow 0.5s, background-color 0.5s; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5); position: relative; overflow: hidden;}
+        .card::before { content: ''; position: absolute; width: 200%; height: 200%; background: linear-gradient(45deg, #38bdf8, #22d3ee, #ffffff); top: -50%; left: -50%; opacity: 0.1; transform: rotate(25deg); transition: opacity 0.4s;}
+        .card:hover::before { opacity: 0.3; }
+        .card:hover { transform: translateY(-20px); background-color: #38bdf8; color: black; box-shadow: 0 8px 25px rgba(0,0,0,0.7);}
+        .card h3 { font-size: 22px; margin-bottom: 10px; }
+        .card p { font-size: 16px; color: #cbd5f5; }
+        .card:hover p { color: black; }
+
+        /* Footer */
+        footer { background-color: #111; padding: 30px 50px; text-align: center; font-size: 14px; color: #94a3b8; opacity: 0; animation: fadeSlide 2s forwards 2s;}
+        .social-icons a { margin: 0 10px; font-size: 20px; color: #94a3b8; transition: color 0.3s, transform 0.3s;}
+        .social-icons a:hover { color: #38bdf8; transform: scale(1.2); }
+
+        /* Modal Styles */
+        .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+        .modal-content { background-color: #1f1f1f; margin: 10% auto; padding: 30px; border-radius: 15px; width: 400px; color: white; position: relative; }
+        .close { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 24px; font-weight: bold; cursor: pointer; transition: color 0.3s; }
+        .close:hover { color: #38bdf8; }
+
+        .tab { display: flex; justify-content: space-around; margin-bottom: 20px; cursor: pointer; font-weight: bold; color: #cbd5f5; transition: color 0.3s; }
+        .tab.active { color: #38bdf8; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group input { width: 100%; padding: 10px; border-radius: 8px; border: none; background: #2c2c2c; color: white; }
+        .form-group input::placeholder { color: #94a3b8; }
+        .form-btn { width: 100%; padding: 12px; background-color: #38bdf8; color: black; font-weight: bold; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s; }
+        .form-btn:hover { background-color: #22d3ee; box-shadow: 0 0 15px #22d3ee; }
+
+        .social-login { display: flex; justify-content: space-around; margin-top: 10px; }
+        .social-login i { font-size: 24px; color: #cbd5f5; cursor: pointer; transition: color 0.3s; }
+        .social-login i:hover { color: #38bdf8; }
+
+        html { scroll-behavior: smooth; }
+
+        @media(max-width:768px){ .card-container{ flex-direction: column; align-items:center;} header{flex-direction:column;} nav a{margin:10px;} .modal-content{width:90%; margin:20% auto;}}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Vyra Innovations</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#courses">Courses</a>
+            <a href="#" id="loginBtn">Login</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <span></span><span></span><span></span>
+        <h2>Empowering Innovation Through Intelligent Technology</h2>
+        <p>Learn coding, design & IT skills the fun way!</p>
+        <a href="#courses" class="btn">Explore Courses</a>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <h2>Our Courses</h2>
+        <div class="card-container">
+            <div class="card"><h3>Web Development</h3><p>Build modern websites with HTML, CSS & JavaScript.</p></div>
+            <div class="card"><h3>Game Development</h3><p>Create fun interactive games and projects.</p></div>
+            <div class="card"><h3>Digital Marketing</h3><p>Learn marketing strategies and grow online.</p></div>
+            <div class="card"><h3>Electronics</h3><p>Explore circuits, electronics & real-life projects.</p></div>
+            <div class="card"><h3>Python Programming</h3><p>Learn Python coding with hands-on projects.</p></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Vyra Innovations. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>Contact: info@vyra-innovations.com | +92 300 1234567</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="tab-container">
+                <div class="tab active" id="loginTab">Login</div>
+                <div class="tab" id="registerTab">Sign Up</div>
+            </div>
+            <form id="loginForm">
+                <div class="form-group"><input type="text" placeholder="Username" required></div>
+                <div class="form-group"><input type="password" placeholder="Password" required></div>
+                <button type="submit" class="form-btn">Login</button>
+            </form>
+            <form id="registerForm" style="display:none;">
+                <div class="form-group"><input type="text" placeholder="Username" required></div>
+                <div class="form-group"><input type="email" placeholder="Email" required></div>
+                <div class="form-group"><input type="tel" placeholder="Phone" required></div>
+                <div class="form-group"><input type="password" placeholder="Password" required></div>
+                <div class="form-group"><input type="password" placeholder="Confirm Password" required></div>
+                <button type="submit" class="form-btn">Sign Up</button>
+            </form>
+            <div class="social-login">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-google"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal logic
+        const loginBtn = document.getElementById('loginBtn');
+        const modal = document.getElementById('loginModal');
+        const closeBtn = document.querySelector('.close');
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        loginBtn.onclick = ()=>{ modal.style.display = "block"; }
+        closeBtn.onclick = ()=>{ modal.style.display = "none"; }
+        window.onclick = (e)=>{ if(e.target==modal){ modal.style.display = "none"; } }
+
+        loginTab.onclick = ()=>{
+            loginTab.classList.add('active'); registerTab.classList.remove('active');
+            loginForm.style.display='block'; registerForm.style.display='none';
+        }
+        registerTab.onclick = ()=>{
+            registerTab.classList.add('active'); loginTab.classList.remove('active');
+            loginForm.style.display='none'; registerForm.style.display='block';
+        }
+
+        // Redirect after "login/signup" (for demo)
+        loginForm.onsubmit = (e)=>{ e.preventDefault(); window.location.href='dashboard.html'; }
+        registerForm.onsubmit = (e)=>{ e.preventDefault(); window.location.href='dashboard.html'; }
+    </script>
+</body>
+</html>
