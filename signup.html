@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign Up — Vyra Innovations</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html#about" aria-label="Vyra Innovations">
+        <span class="brand-name">Vyra Innovations</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="signup">
+      <h1>Sign Up for a Course</h1>
+      <p class="lead">Fill the form below and our team will contact you with enrollment details.</p>
+
+      <form name="signup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/success.html" class="signup-form" novalidate>
+        <input type="hidden" name="form-name" value="signup">
+        <p style="display:none;"><label>Don’t fill this out if you're human: <input name="bot-field"></label></p>
+
+        <label>
+          <span>Course</span>
+          <input type="text" name="course" placeholder="Course you're interested in" required>
+        </label>
+
+        <label>
+          <span>Phone (optional)</span>
+          <input type="tel" name="phone">
+        </label>
+
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Sign Up</button>
+          <a class="btn ghost" href="courses.html">Back to courses</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">© <span id="year"></span> Vyra Innovations</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

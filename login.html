@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Log In — Vyra Innovations</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html#about" aria-label="Vyra Innovations">
+        <span class="brand-name">Vyra Innovations</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container" style="padding:4rem 2rem; max-width:640px;">
+    <h1>Log In</h1>
+    <p class="lead">Sign in to access your account and enrolled courses (simple prototype).</p>
+    <form class="login-form" method="POST" action="#" onsubmit="event.preventDefault(); alert('This is a demo login page.');">
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" name="password" required>
+      </label>
+      <div class="form-actions">
+        <button class="btn primary" type="submit">Sign In</button>
+        <a class="btn ghost" href="signup.html">Sign Up</a>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">© <span id="year"></span> Vyra Innovations</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

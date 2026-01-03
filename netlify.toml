@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+
+[context.production.environment]
+  NODE_ENV = "production"
+
+[build.environment]
+  TERM = "xterm-256color"
+
+[[redirects]]
+  from = "/success.html"
+  to = "/success.html"
+  status = 200
+  force = true
